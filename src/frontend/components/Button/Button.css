@@ -1,0 +1,6 @@
+@import "react-toolbox/lib/button/theme.css";
+
+.button {
+    margin: 2rem;
+    float: right;
+}

@@ -4,8 +4,6 @@ This is a simple weather app based on Steven Grider's React/Redux Tutorial.
 
 It uses material design react components.
 
-**Work in Progress - needs data source**
-
 ## Contains
 
 - [x] [Webpack 2.2](https://webpack.github.io)

@@ -1,0 +1,5 @@
+@import "react-toolbox/lib/input/theme.css";
+
+.input {
+    margin: 2rem;
+}
