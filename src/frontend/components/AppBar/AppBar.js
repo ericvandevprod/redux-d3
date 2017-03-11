@@ -5,7 +5,7 @@ import theme from './AppBar.css';
 
 const AppBarComponent = ({ children, ...other }) => (
     <AppBar {...other} theme={theme}>
-      <Logo /> App Example
+      <Logo /> Weather App
       {children}
     </AppBar>
 );

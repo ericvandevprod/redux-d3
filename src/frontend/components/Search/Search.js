@@ -5,7 +5,16 @@ import theme from './Search.css';
 import Button from './../Button/Button';
 
 class InputComponent extends Component {
-  state = { name: '', phone: '', email: '', hint: '' };
+
+  constructor(props) {
+    super(props);
+
+    this.state = { name: '', phone: '', email: '', hint: '', term: '' };
+  }
+
+  onInputChange(event) {
+    console.log(event.target.value);
+  }
 
   handleChange = (name, value) => {
     this.setState({...this.state, [name]: value});
