@@ -3,9 +3,13 @@ logs
 *.log
 npm-debug.log*
 
-#IntelliJ
+# IntelliJ
 *.idea
 *.iml
+
+# ENV
+.env
+env.js
 
 # Runtime data
 pids
