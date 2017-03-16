@@ -18,7 +18,7 @@ class SearchInput extends Component {
   render() {
     return (
         <div>
-          <Input theme={theme} type='text' label='Search by city or zip' name='search' value={this.state.search} onChange={this.handleChange.bind(this, 'search')} maxLength={30} />
+          <Input theme={theme} type='text' label='Search by city or zip' name='search' value={this.state.search} onChange={this.handleChange.bind(this, 'search')} maxLength={30} autoFocus />
         </div>
     );
   }

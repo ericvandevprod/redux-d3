@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const Dotenv = require('dotenv-webpack');
 
 const settings = {
   entry: {
@@ -59,7 +60,11 @@ const settings = {
     inline: true
   },
   plugins: [
-    new webpack.NamedModulesPlugin()
+    new webpack.NamedModulesPlugin(),
+    new Dotenv({
+      path: './.env',
+      safe: false
+    })
   ],
 };
 
