@@ -1,6 +1,6 @@
 @import "react-toolbox/lib/input/theme.css";
 
 .input {
-    max-width: 560px;
-    margin: 20px auto;
+    min-width: 300px;
+    margin: 10px;
 }

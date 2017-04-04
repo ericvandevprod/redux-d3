@@ -1,8 +1,0 @@
-@import "react-toolbox/lib/button/theme.css";
-
-.button {
-    position: fixed;
-    top: 10.6rem;
-    right: 12.8rem;
-    z-index: 300;
-}

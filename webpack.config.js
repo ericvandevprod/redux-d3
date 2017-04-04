@@ -5,7 +5,7 @@ const Dotenv = require('dotenv-webpack');
 const settings = {
   entry: {
     bundle: [
-      "./src/frontend/index.js"
+      "./src/app/index.js"
     ]
   },
   output: {
