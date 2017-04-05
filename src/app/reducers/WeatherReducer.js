@@ -1,4 +1,4 @@
-import { FETCH_WEATHER } from '../actions/index';
+import { FETCH_WEATHER } from '../actions/fetchWeather';
 import moment from 'moment';
 import _ from 'lodash';
 
@@ -6,7 +6,7 @@ const getConvertedTime = (timestamp) => {
   return moment.unix(timestamp).format('MM-DD-YYYY');
 };
 
-export default function(state = [], action) {
+export default function(state = {}, action) {
   switch (action.type) {
     case FETCH_WEATHER:
       let data = action.payload.data;
@@ -23,7 +23,7 @@ export default function(state = [], action) {
           }
         });
       }
-      return _.isUndefined(action.payload) ? state : [ data, ...state ];
+      return _.isUndefined(action.payload) ? state : data;
   }
   return state;
 }

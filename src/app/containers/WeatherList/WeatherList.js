@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
+import _ from 'lodash';
 
 import {Tab, Tabs} from 'react-toolbox';
+import {convertTime} from '../../utils/convertTime';
 import theme from './WeatherList.css';
 
 class WeatherList extends Component {
@@ -11,33 +13,52 @@ class WeatherList extends Component {
     super(props);
 
     this.state = {
-      index: 1,
-      fixedIndex: 1,
-      inverseIndex: 1
+      index: 0,
+      fixedIndex: 0,
+      inverseIndex: 0
     };
-    this.logData = this.logData.bind(this);
+    this.renderWeather = this.renderWeather.bind(this);
   }
 
   handleFixedTabChange = (index) => {
     this.setState({fixedIndex: index});
   };
 
-  logData = () => {
-    console.log(this.props.weather);
+  renderWeather = (day, i, days) => {
+    let dayName = moment.unix(day.time).format('dddd');
+
+    if (i === 0) {
+      dayName = 'Today';
+    }
+    return (
+        <Tab label={dayName} key={Math.random() * 10}><small>Hi</small></Tab>
+    );
+
   };
 
   render () {
-    return (
-        <section>
-          <Tabs theme={theme} index={this.state.fixedIndex} onChange={this.handleFixedTabChange} fixed>
-            <Tab label='Monday'><small>Monday</small></Tab>
-            <Tab label='Tuesday'><small onClick={this.logData}>Tuesday</small></Tab>
-            <Tab label='Wednesday'><small>Wednesday</small></Tab>
-            <Tab label='Thursday'><small>Thursday</small></Tab>
-            <Tab label='Friday'><small>Friday</small></Tab>
-          </Tabs>
-        </section>
-    );
+    if (this.props.weather.daily) {
+      return (
+          <section>
+            <Tabs theme={theme} index={this.state.fixedIndex} onChange={this.handleFixedTabChange} fixed>
+              {this.props.weather.daily.data.map(this.renderWeather)}
+            </Tabs>
+          </section>
+      );
+    } else {
+      return (
+          <section>
+            <Tabs theme={theme} index={this.state.fixedIndex} onChange={this.handleFixedTabChange} fixed>
+              <Tab label='Monday'><small>Monday</small></Tab>
+              <Tab label='Tuesday'><small onClick={this.reduceData}>Tuesday</small></Tab>
+              <Tab label='Wednesday'><small>Wednesday</small></Tab>
+              <Tab label='Thursday'><small>Thursday</small></Tab>
+              <Tab label='Friday'><small>Friday</small></Tab>
+            </Tabs>
+          </section>
+      );
+    }
+
   }
 }
 

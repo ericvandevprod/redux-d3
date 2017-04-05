@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchWeather } from '../../actions/index';
+import { fetchWeather } from '../../actions/fetchWeather';
+import { preloadWeather } from '../../actions/fetchIP';
 
 import SearchInput from '../../components/Inputs/SearchInput';
 import SearchButton from '../../components/Buttons/SearchButton';
 
 let formStyle = {
+  marginTop: '50px',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'baseline',
@@ -19,9 +21,13 @@ class SearchForm extends Component {
     super(props);
 
     this.state = { term: '' };
-  }
+  };
 
-  temporaryMethod = (searchTerm) => {
+  componentWillMount = () => {
+    this.props.preloadWeather();
+  };
+
+  trackSearch = (searchTerm) => {
     this.setState({ term: searchTerm });
   };
 
@@ -29,13 +35,13 @@ class SearchForm extends Component {
     event.preventDefault();
 
     this.props.fetchWeather(this.state.term);
-  }
+  };
 
   render() {
     return (
         <form style={formStyle} className="search-form" onSubmit={this.onFormSubmit.bind(this)}>
           <SearchInput
-              onSearchTermChange={searchTerm => {this.temporaryMethod(searchTerm)}} />
+              onSearchTermChange={searchTerm => {this.trackSearch(searchTerm)}} />
           <SearchButton />
         </form>
     );
@@ -43,7 +49,7 @@ class SearchForm extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchWeather }, dispatch);
+  return bindActionCreators({ fetchWeather, preloadWeather }, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(SearchForm);
