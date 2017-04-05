@@ -4,7 +4,6 @@ import moment from 'moment';
 import _ from 'lodash';
 
 import {Tab, Tabs} from 'react-toolbox';
-import {convertTime} from '../../utils/convertTime';
 import theme from './WeatherList.css';
 
 class WeatherList extends Component {
@@ -20,18 +19,26 @@ class WeatherList extends Component {
     this.renderWeather = this.renderWeather.bind(this);
   }
 
+  static importComponent(component) {
+    if (component.default) {
+      return component.default;
+    }
+    return component;
+  }
+
   handleFixedTabChange = (index) => {
     this.setState({fixedIndex: index});
   };
 
   renderWeather = (day, i, days) => {
     let dayName = moment.unix(day.time).format('dddd');
+    let Icon = WeatherList.importComponent(require(`./../../icons/${day.icon}`));
 
     if (i === 0) {
       dayName = 'Today';
     }
     return (
-        <Tab label={dayName} key={Math.random() * 10}><small>Hi</small></Tab>
+        <Tab label={dayName} key={Math.random() * 10}><div className="svg-container"><Icon /><div>{day.summary}</div></div></Tab>
     );
 
   };

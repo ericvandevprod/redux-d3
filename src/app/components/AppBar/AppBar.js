@@ -13,7 +13,7 @@ let logoStyle = {
 
 const AppBarComponent = ({ children, ...other }) => (
     <AppBar {...other} theme={theme}>
-      <Logo style={logoStyle}/> Weather App
+      <Logo style={logoStyle} /> Weather App
       {children}
     </AppBar>
 );

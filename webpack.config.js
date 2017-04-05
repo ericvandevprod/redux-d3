@@ -23,6 +23,7 @@ const settings = {
         test: /\.js?$/,
         loader: 'babel-loader',
         options: {
+          compact: false,
           presets: [
             ["es2015", { modules: false }],
             "stage-2",
