@@ -4,6 +4,9 @@ import moment from 'moment';
 import _ from 'lodash';
 
 import {Tab, Tabs} from 'react-toolbox';
+import Spinner from './../../components/Progress/Spinner';
+import Locality from './../../components/Locality/Locality';
+import Content from './../../components/Content/Content';
 import theme from './WeatherList.css';
 
 class WeatherList extends Component {
@@ -20,7 +23,7 @@ class WeatherList extends Component {
   }
 
   static importComponent(component) {
-    if (component.default) {
+    if (component.hasOwnProperty('default')) {
       return component.default;
     }
     return component;
@@ -38,7 +41,13 @@ class WeatherList extends Component {
       dayName = 'Today';
     }
     return (
-        <Tab label={dayName} key={Math.random() * 10}><div className="svg-container"><Icon /><div>{day.summary}</div></div></Tab>
+        <Tab label={dayName} key={Math.random() * 10}>
+          <div style={{width: '200px', textAlign: 'center'}}>
+            <Icon />
+            <Locality data={this.props.weather} />
+            <Content data={day} />
+          </div>
+        </Tab>
     );
 
   };
@@ -54,15 +63,7 @@ class WeatherList extends Component {
       );
     } else {
       return (
-          <section>
-            <Tabs theme={theme} index={this.state.fixedIndex} onChange={this.handleFixedTabChange} fixed>
-              <Tab label='Monday'><small>Monday</small></Tab>
-              <Tab label='Tuesday'><small onClick={this.reduceData}>Tuesday</small></Tab>
-              <Tab label='Wednesday'><small>Wednesday</small></Tab>
-              <Tab label='Thursday'><small>Thursday</small></Tab>
-              <Tab label='Friday'><small>Friday</small></Tab>
-            </Tabs>
-          </section>
+          <Spinner />
       );
     }
 

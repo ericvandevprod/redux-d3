@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchWeather } from '../../actions/fetchWeather';
-import { preloadWeather } from '../../actions/fetchIP';
 
 import SearchInput from '../../components/Inputs/SearchInput';
 import SearchButton from '../../components/Buttons/SearchButton';
@@ -19,13 +18,18 @@ class SearchForm extends Component {
 
   constructor(props) {
     super(props);
-
     this.state = { term: '' };
   };
 
-  componentWillMount = () => {
-    this.props.preloadWeather();
-  };
+  componentWillReceiveProps(props) {
+    this.setState({ term: props.ip.zip_code });
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    if (this.props !== nextProps) {
+      this.props.fetchWeather(nextProps.ip.zip_code);
+    }
+  }
 
   trackSearch = (searchTerm) => {
     this.setState({ term: searchTerm });
@@ -49,7 +53,11 @@ class SearchForm extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchWeather, preloadWeather }, dispatch);
+  return bindActionCreators({ fetchWeather }, dispatch);
 }
 
-export default connect(null, mapDispatchToProps)(SearchForm);
+function mapStateToProps({ ip }) {
+  return { ip };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchForm);
