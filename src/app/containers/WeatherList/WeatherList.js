@@ -29,6 +29,12 @@ class WeatherList extends Component {
     return component;
   }
 
+  componentWillUpdate(nextProps, nextState) {
+    if (this.props.weather.timezone !== nextProps.weather.timezone) {
+      this.forceUpdate();
+    }
+  }
+
   handleFixedTabChange = (index) => {
     this.setState({fixedIndex: index});
   };

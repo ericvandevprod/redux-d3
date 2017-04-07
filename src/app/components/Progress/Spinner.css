@@ -1,2 +1,7 @@
 @import "../../../../node_modules/react-toolbox/lib/progress_bar/theme.css";
 
+.circular {
+    width: 60px;
+    height: 60px;
+    margin: 100px auto;
+}
