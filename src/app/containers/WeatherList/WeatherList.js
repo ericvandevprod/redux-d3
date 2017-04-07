@@ -4,9 +4,10 @@ import moment from 'moment';
 import _ from 'lodash';
 
 import {Tab, Tabs} from 'react-toolbox';
-import Spinner from './../../components/Progress/Spinner';
+import Icon from './../../components/Icon/Icon';
 import Locality from './../../components/Locality/Locality';
 import Content from './../../components/Content/Content';
+import Spinner from './../../components/Progress/Spinner';
 import theme from './WeatherList.css';
 
 class WeatherList extends Component {
@@ -41,7 +42,6 @@ class WeatherList extends Component {
 
   renderWeather = (day, i, days) => {
     let dayName = moment.unix(day.time).format('dddd');
-    let Icon = WeatherList.importComponent(require(`./../../icons/${day.icon}`));
 
     if (i === 0) {
       dayName = 'Today';
@@ -49,7 +49,7 @@ class WeatherList extends Component {
     return (
         <Tab label={dayName} key={Math.random() * 10}>
           <div style={{width: '200px', textAlign: 'center'}}>
-            <Icon />
+            <Icon data={day.icon} />
             <Locality data={this.props.weather} />
             <Content data={day} />
           </div>

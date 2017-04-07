@@ -1,7 +1,7 @@
 import React from 'react';
 
 const fog = (props) => (
-    <svg width="200" height="200" viewBox="0 0 64 64" {...props}>
+    <svg id="fog" width="200" height="200" style={{padding: '10px'}} viewBox="0 0 72 72" stroke="red" strokeWidth="1" {...props}>
       <g>
         <path d="M0.1,32.8C0,33.9,0.8,34.9,1.9,35C1.9,35,2,35,2,35c1,0,1.9-0.8,2-1.8c0.4-4.7,4.3-8.2,9-8.2
 		c0.9,0,1.8,0.1,2.6,0.4l2.2,0.7l0.3-2.3C19.3,16.5,25.6,11,33,11c5.9,0,11.3,3.5,13.7,8.9l0.6,1.2l1.6-0.1c0.1,0,0.1,0,0.2,0

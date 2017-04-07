@@ -1,7 +1,7 @@
 import React from 'react';
 
 const tornado = (props) => (
-    <svg width="200" height="200" viewBox="0 0 64 64" {...props}>
+    <svg id="tornado" width="200" height="200" style={{padding: '10px'}} viewBox="0 0 72 72" stroke="red" strokeWidth="1" {...props}>
       <g>
         <path d="M60,4c0-1.1-0.9-2-2-2H2C0.9,2,0,2.9,0,4s0.9,2,2,2h56C59.1,6,60,5.1,60,4z"/>
         <path d="M62,10H12c-1.1,0-2,0.9-2,2s0.9,2,2,2h50c1.1,0,2-0.9,2-2S63.1,10,62,10z"/>

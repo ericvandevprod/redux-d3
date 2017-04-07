@@ -1,7 +1,7 @@
 import React from 'react';
 
 const thunderstorm = (props) => (
-    <svg width="200" height="200" viewBox="0 0 64 64" {...props}>
+    <svg id="thunderstorm" width="200" height="200" style={{padding: '10px'}} viewBox="0 0 72 72" stroke="red" strokeWidth="1" {...props}>
       <g>
         <path d="M13,42h9c1.1,0,2-0.9,2-2s-0.9-2-2-2h-9c-5,0-9-4-9-9s4-9,9-9c0.9,0,1.8,0.1,2.6,0.4l2.2,0.7l0.3-2.3
 		C19.3,11.5,25.6,6,33,6c5.9,0,11.3,3.5,13.7,8.9l0.6,1.2l1.6-0.1c0.1,0,0.1,0,0.2,0c6.1,0,11,4.9,11,11s-4.9,11-10.9,11L42,38

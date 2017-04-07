@@ -1,7 +1,7 @@
 import React from 'react';
 
 const snow = (props) => (
-    <svg width="200" height="200" viewBox="0 0 64 64" {...props}>
+    <svg id="snow" width="200" height="200" style={{padding: '10px'}} viewBox="0 0 72 72" stroke="red" strokeWidth="1" {...props}>
       <g>
         <path d="M2,25.6C2,32.4,7.5,38,14.3,38l33.6,0C55.7,38,62,31.6,62,23.7c0-7.6-5.9-13.8-13.3-14.2
 		C45.5,3.7,39.5,0,32.9,0c-8.1,0-15.1,5.6-17.2,13.3c-0.5-0.1-1-0.1-1.4-0.1C7.5,13.2,2,18.8,2,25.6z M14.3,17.2
