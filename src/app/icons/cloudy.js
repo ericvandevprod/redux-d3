@@ -1,7 +1,7 @@
 import React from 'react';
 
 const cloudy = (props) => (
-    <svg id="cloudy" width="200" height="200" style={{padding: '10px'}} viewBox="0 0 72 72" stroke="red" strokeWidth="1" {...props}>
+    <svg id="cloudy" viewBox="0 0 72 72" strokeWidth="0.5" {...props}>
       <g>
         <path d="M64,27c0-6.2-4.7-11.3-10.7-11.9C50.7,10.1,45.7,7,40,7c-7.3,0-13.5,5.2-14.7,12.2C18,20.3,12,25.8,10.4,33.1
 		C4.6,33.9,0,38.9,0,45c0,6.6,5.4,12,12,12h32.1l2,0v-0.2C52.8,55.8,58,50,58,43c0-1.8-0.4-3.5-1-5.1C61.2,36,64,31.8,64,27z

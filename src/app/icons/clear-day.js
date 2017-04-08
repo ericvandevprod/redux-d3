@@ -1,7 +1,7 @@
 import React from 'react';
 
 const clearDay = (props) => (
-  <svg id="clear-day" width="200" height="200" style={{padding: '10px'}} viewBox="0 0 72 72" stroke="red" strokeWidth="1" {...props}>
+  <svg id="clear-day" viewBox="0 0 72 72" strokeWidth="0.5" {...props}>
     <g>
       <path d="M32,48c8.8,0,16-7.2,16-16s-7.2-16-16-16s-16,7.2-16,16S23.2,48,32,48z M32,20c6.6,0,12,5.4,12,12
 		s-5.4,12-12,12s-12-5.4-12-12S25.4,20,32,20z"/>

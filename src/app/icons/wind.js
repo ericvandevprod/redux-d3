@@ -1,7 +1,7 @@
 import React from 'react';
 
 const wind = (props) => (
-    <svg id="wind" width="200" height="200" style={{padding: '10px'}} viewBox="0 0 72 72" stroke="red" strokeWidth="1" {...props}>
+    <svg id="wind" viewBox="0 0 72 72" strokeWidth="0.5" {...props}>
       <g>
         <path d="M32,10c1.1,0,2-0.9,2-2V2c0-1.1-0.9-2-2-2s-2,0.9-2,2v6C30,9.1,30.9,10,32,10z"/>
         <path d="M4,32h8c1.1,0,2-0.9,2-2s-0.9-2-2-2H4c-1.1,0-2,0.9-2,2S2.9,32,4,32z"/>

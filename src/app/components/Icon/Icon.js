@@ -1,33 +1,60 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Vivus from 'vivus';
 
-export default class Icon extends Component {
+import randomAnimation from './../../utils/randomAnimation';
+
+import styles from './Icons.css';
+
+class Icon extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { icon: props.data };
+    this.state = {
+      finished: false,
+      selectedColor: '#ff5177'
+    };
+
+    this.componentDidMount = this.componentDidMount.bind(this);
+    this.fillIcon = this.fillIcon.bind(this);
   }
 
-  componentDidMount() {
-    new Vivus(this.state.icon, {
+  fillIcon = () => {
+    this.setState({finished: true});
+  };
+
+  componentDidMount = () => {
+    new Vivus(this.props.icon, {
       type: 'oneByOne',
-      duration: 300,
-      animTimingFunction: Vivus.EASE,
+      duration: 200,
+      animTimingFunction: randomAnimation(),
       selfDestroy: true
-    });
-  }
+    }, this.fillIcon.bind(this));
+  };
 
-  importComponent = (component) => {
+  static importComponent = (component) => {
     if (component.hasOwnProperty('default')) {
       return component.default;
     }
     return component;
-  }
+  };
 
   render() {
-    let Icon = this.importComponent(require(`./../../icons/${this.state.icon}`));
+    let Icon = this.constructor.importComponent(require(`./../../icons/${this.props.icon}`));
+
     return (
-        <Icon />
+        <Icon
+            width="200"
+            height="200"
+            fill={this.props.color}
+            stroke={this.props.color}
+            className={this.state.finished ? styles.finished : styles.icon} />
     )
   }
 }
+
+function mapStateToProps({ weather }) {
+  return { weather };
+}
+
+export default connect(mapStateToProps)(Icon);

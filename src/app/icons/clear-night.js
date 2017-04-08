@@ -1,7 +1,7 @@
 import React from 'react';
 
 const clearNight = (props) => (
-    <svg id="clear-night" width="200" height="200" style={{padding: '10px'}} viewBox="0 0 72 72" stroke="red" strokeWidth="1" {...props}>
+    <svg id="clear-night" viewBox="0 0 72 72" strokeWidth="0.5" {...props}>
       <g>
         <path d="M54.3,32.1c0-11.4-8.6-20.9-19.9-22l-3.7-0.4l1.8,3.3c1.2,2.1,1.8,4.6,1.8,7c0,8.1-6.6,14.8-14.8,14.8
 		c-2.2,0-4.3-0.5-6.3-1.4l-3.4-1.6l0.6,3.7C12,46.4,21.2,54.3,32.1,54.3C44.3,54.3,54.3,44.3,54.3,32.1z M32.1,50.3

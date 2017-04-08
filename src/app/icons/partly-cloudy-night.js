@@ -1,7 +1,7 @@
 import React from 'react';
 
 const partlyCloudyNight = (props) => (
-    <svg id="partly-cloudy-night" width="200" height="200" style={{padding: '10px'}} viewBox="0 0 72 72" stroke="red" strokeWidth="1" {...props}>
+    <svg id="partly-cloudy-night" viewBox="0 0 72 72" strokeWidth="0.5" {...props}>
       <g>
         <path d="M8.8,37.3C7.1,39.4,6,42.1,6,45c0,6.6,5.4,12,12,12l32.1,0C57.8,57,64,50.7,64,43c0-7.7-6.2-13.9-13.9-14
 		c-3-6.1-9.2-10-16.1-10c-0.8,0-1.7,0.1-2.5,0.2C29.8,12.1,23.5,7,16,7c-0.2,0-0.5,0-0.7,0l-3.1,0.2l1.1,2.6c0.4,1,0.7,2.1,0.7,3.2

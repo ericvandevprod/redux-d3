@@ -8,6 +8,7 @@ import Icon from './../../components/Icon/Icon';
 import Locality from './../../components/Locality/Locality';
 import Content from './../../components/Content/Content';
 import Spinner from './../../components/Progress/Spinner';
+import colorGenerator from './../../utils/colorGenerator';
 import theme from './WeatherList.css';
 
 class WeatherList extends Component {
@@ -49,9 +50,13 @@ class WeatherList extends Component {
     return (
         <Tab label={dayName} key={Math.random() * 10}>
           <div style={{width: '200px', textAlign: 'center'}}>
-            <Icon data={day.icon} />
-            <Locality data={this.props.weather} />
-            <Content data={day} />
+            <Icon
+                icon={day.icon}
+                color={colorGenerator()} />
+            <Locality
+                data={this.props.weather} />
+            <Content
+                data={day} />
           </div>
         </Tab>
     );

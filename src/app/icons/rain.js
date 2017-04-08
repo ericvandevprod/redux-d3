@@ -1,7 +1,7 @@
 import React from 'react';
 
 const rain = (props) => (
-    <svg id="rain" width="200" height="200" style={{padding: '10px'}} viewBox="0 0 72 72" stroke="red" strokeWidth="1" {...props}>
+    <svg id="rain" viewBox="0 0 72 72" strokeWidth="0.5" {...props}>
       <g>
         <path d="M49.7,10C46.5,3.9,40,0,33,0c-8.6,0-16.2,5.9-18.3,14.1C14.1,14,13.6,14,13,14C5.8,14,0,19.8,0,27
 		s5.8,13,13,13l36,0c8.3,0,15-6.7,15-15C64,17,57.7,10.4,49.7,10z M49,36l-36,0c-5,0-9-4-9-9s4-9,9-9c0.9,0,1.8,0.1,2.6,0.4l2.2,0.7
