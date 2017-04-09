@@ -3,5 +3,11 @@
 }
 
 .tab {
-    margin: 50px auto;
+    margin: 20px auto;
+}
+
+.container {
+    width: 400px;
+    text-align: center;
+    pointer-events: none;
 }

@@ -5,8 +5,7 @@ import _ from 'lodash';
 
 import {Tab, Tabs} from 'react-toolbox';
 import Icon from './../../components/Icon/Icon';
-import Locality from './../../components/Locality/Locality';
-import Content from './../../components/Content/Content';
+import ContentList from './../../components/List/List';
 import Spinner from './../../components/Progress/Spinner';
 import colorGenerator from './../../utils/colorGenerator';
 import theme from './WeatherList.css';
@@ -49,14 +48,12 @@ class WeatherList extends Component {
     }
     return (
         <Tab label={dayName} key={Math.random() * 10}>
-          <div style={{width: '200px', textAlign: 'center'}}>
+          <div style={{width: '400px', textAlign: 'center', pointerEvents: 'none'}}>
             <Icon
                 icon={day.icon}
                 color={colorGenerator()} />
-            <Locality
-                data={this.props.weather} />
-            <Content
-                data={day} />
+            <ContentList
+                day={day} />
           </div>
         </Tab>
     );

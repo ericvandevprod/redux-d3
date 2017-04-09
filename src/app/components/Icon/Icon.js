@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import Vivus from 'vivus';
 
 import randomAnimation from './../../utils/randomAnimation';
@@ -12,24 +11,34 @@ class Icon extends Component {
 
     this.state = {
       finished: false,
-      selectedColor: '#ff5177'
+      selectedColor: '',
     };
 
     this.componentDidMount = this.componentDidMount.bind(this);
+    this.componentWillUnmount = this.componentWillUnmount.bind(this);
     this.fillIcon = this.fillIcon.bind(this);
   }
 
   fillIcon = () => {
-    this.setState({finished: true});
+    if (this._isMounted) {
+      this.setState({finished: true});
+    }
+  };
+
+  componentWillUnmount = () => {
+    this.setState({finished: false});
+    this._isMounted = false;
+    this._vivus = null;
   };
 
   componentDidMount = () => {
-    new Vivus(this.props.icon, {
+    this._vivus = new Vivus(this.props.icon, {
       type: 'oneByOne',
       duration: 200,
       animTimingFunction: randomAnimation(),
       selfDestroy: true
     }, this.fillIcon.bind(this));
+    this._isMounted = true;
   };
 
   static importComponent = (component) => {
@@ -53,8 +62,4 @@ class Icon extends Component {
   }
 }
 
-function mapStateToProps({ weather }) {
-  return { weather };
-}
-
-export default connect(mapStateToProps)(Icon);
+export default Icon;
