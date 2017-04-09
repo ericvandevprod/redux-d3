@@ -7,6 +7,7 @@ import {Tab, Tabs} from 'react-toolbox';
 import Icon from './../../components/Icon/Icon';
 import ContentList from './../../components/List/List';
 import Spinner from './../../components/Progress/Spinner';
+import SnackBar from './../../components/SnackBar/SnackBar';
 import colorGenerator from './../../utils/colorGenerator';
 import theme from './WeatherList.css';
 
@@ -29,6 +30,10 @@ class WeatherList extends Component {
     }
     return component;
   }
+
+  renderSnackbar = () => {
+
+  };
 
   componentWillUpdate(nextProps, nextState) {
     if (this.props.weather.timezone !== nextProps.weather.timezone) {
@@ -69,6 +74,14 @@ class WeatherList extends Component {
             </Tabs>
           </section>
       );
+    } else if (this.props.weather.error) {
+      console.log('errored to snackbar');
+      return (
+          <section>
+            <Spinner />
+            <SnackBar error={true} message={this.props.weather} />
+          </section>
+      )
     } else {
       return (
           <Spinner />

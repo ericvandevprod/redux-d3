@@ -11,6 +11,10 @@ export default function(state = {}, action) {
     case FETCH_WEATHER:
       let data = action.payload.data;
 
+      if (action.payload.data.error) {
+        return data;
+      }
+
       if (data && _.isArray(data.daily.data)) {
         data.daily.data.map(function(day, i, days) {
           let amendIndex = false;

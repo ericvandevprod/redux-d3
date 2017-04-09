@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { preloadWeather } from './../../actions/fetchIP';
+import { fetchIP } from './../../actions/fetchIP';
 
 import AppBar from './../AppBar/AppBar';
 import SearchForm from '../../containers/SearchForm/SearchForm';
@@ -13,7 +13,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.props.preloadWeather();
+    this.props.fetchIP();
   }
 
   render() {
@@ -28,7 +28,7 @@ class App extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ preloadWeather }, dispatch);
+  return bindActionCreators({ fetchIP }, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(App);

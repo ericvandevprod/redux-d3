@@ -4,8 +4,8 @@ import ProgressBar from 'react-toolbox/lib/progress_bar';
 import theme from './Spinner.css';
 
 let container = {
-  width: '200px',
-  margin: '0 auto'
+  width: '62px',
+  margin: '0 auto',
 };
 
 const Spinner = () => (

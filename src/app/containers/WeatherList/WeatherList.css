@@ -6,8 +6,12 @@
     margin: 20px auto;
 }
 
-.container {
+.tab div {
     width: 400px;
     text-align: center;
     pointer-events: none;
+}
+
+.tab div:focus {
+    outline: 0;
 }

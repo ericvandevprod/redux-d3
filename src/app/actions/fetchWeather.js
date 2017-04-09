@@ -10,7 +10,12 @@ export function fetchWeather(city) {
   const request = axios.get(geocodeURL)
       .then((response) => {
         if (response.data.status === 'ZERO_RESULTS') {
-          throw new Error(`Unable to find that address`);
+           return Promise.reject({
+            data: {
+              error: true,
+              message: 'Unable to find that address'
+            }
+          });
         }
 
         let lat = response.data.results[0].geometry.location.lat,
@@ -20,8 +25,8 @@ export function fetchWeather(city) {
         console.log(response.data.results[0].formatted_address);
         console.log(weatherUrl);
         return axios.get(weatherUrl);
-      }).catch((e) => {
-        console.log(e.message);
+      }).catch((error) => {
+        return error;
   });
 
   console.log(request);
