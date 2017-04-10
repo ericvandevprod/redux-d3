@@ -21,23 +21,7 @@ class WeatherContainer extends Component {
       inverseIndex: 0
     };
     this.renderWeather = this.renderWeather.bind(this);
-  }
-
-  static importComponent(component) {
-    if (component.hasOwnProperty('default')) {
-      return component.default;
-    }
-    return component;
-  }
-
-  renderSnackbar = () => {
-
-  };
-
-  componentWillUpdate(nextProps, nextState) {
-    if (this.props.weather.timezone !== nextProps.weather.timezone) {
-      this.forceUpdate();
-    }
+    this.handleFixedTabChange = this.handleFixedTabChange.bind(this);
   }
 
   handleFixedTabChange = (index) => {
@@ -63,6 +47,12 @@ class WeatherContainer extends Component {
     );
 
   };
+
+  componentWillUpdate(nextProps, nextState) {
+    if (this.props.weather.timezone !== nextProps.weather.timezone) {
+      this.forceUpdate();
+    }
+  }
 
   render () {
     if (this.props.weather.daily) {

@@ -12,8 +12,16 @@ class ListComponent extends Component {
 
     this.state = {};
 
+    this.locale = this.locale.bind(this);
+    this.formatValue = this.formatValue.bind(this);
+    this.formatLocale = this.formatLocale.bind(this);
+    this.formatWeatherKey = this.formatWeatherKey.bind(this);
     this.renderItem = this.renderItem.bind(this);
   }
+
+  locale = () => {
+    return this.formatLocale(this.props.weather.timezone)
+  };
 
   formatLocale = (str) => {
     let string = str.split('/').join(' - ');
@@ -77,10 +85,6 @@ class ListComponent extends Component {
         formattedValue = value;
         return ItemComponent(formattedValue);
     }
-  };
-
-  locale = () => {
-    return this.formatLocale(this.props.weather.timezone)
   };
 
   renderItem = (day) => {

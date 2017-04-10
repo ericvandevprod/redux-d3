@@ -17,17 +17,17 @@ class IconComponent extends Component {
     this.fillIcon = this.fillIcon.bind(this);
   }
 
-  fillIcon = () => {
-    if (this._isMounted) {
-      this.setState({finished: true});
-    }
-  };
-
   static importComponent = (component) => {
     if (component.hasOwnProperty('default')) {
       return component.default;
     }
     return component;
+  };
+
+  fillIcon = () => {
+    if (this._isMounted) {
+      this.setState({finished: true});
+    }
   };
 
   componentDidMount() {

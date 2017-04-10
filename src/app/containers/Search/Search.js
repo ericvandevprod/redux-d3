@@ -22,6 +22,19 @@ class SearchContainer extends Component {
     this.state = {
       term: ''
     };
+
+    this.trackSearch = this.trackSearch.bind(this);
+    this.onFormSubmit = this.onFormSubmit.bind(this);
+  };
+
+  trackSearch = (searchTerm) => {
+    this.setState({ term: searchTerm });
+  };
+
+  onFormSubmit = (event) => {
+    event.preventDefault();
+
+    this.props.fetchWeather(this.state.term);
   };
 
   componentWillReceiveProps(props) {
@@ -33,16 +46,6 @@ class SearchContainer extends Component {
       this.props.fetchWeather(nextProps.ip.zip_code);
     }
   }
-
-  trackSearch = (searchTerm) => {
-    this.setState({ term: searchTerm });
-  };
-
-  onFormSubmit(event) {
-    event.preventDefault();
-
-    this.props.fetchWeather(this.state.term);
-  };
 
   render() {
     return (
