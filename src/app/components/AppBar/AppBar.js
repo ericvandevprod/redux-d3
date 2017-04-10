@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
-import { AppBar } from 'react-toolbox/lib/app_bar';
-import Logo from '../Logo/Logo.js';
 
+import { AppBar } from 'react-toolbox/lib/app_bar';
+import LogoComponent from '../Logo/Logo.js';
 import theme from './AppBar.css';
 
 let logoStyle = {
@@ -13,7 +13,7 @@ let logoStyle = {
 
 const AppBarComponent = ({ children, ...other }) => (
     <AppBar {...other} theme={theme}>
-      <Logo style={logoStyle} /> Weather App
+      <LogoComponent style={logoStyle} /> Weather App
       {children}
     </AppBar>
 );

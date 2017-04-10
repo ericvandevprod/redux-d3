@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Input } from 'react-toolbox/lib/input';
-import theme from './SearchInput.css';
 
-class SearchInput extends Component {
+import { Input } from 'react-toolbox/lib/input';
+import theme from './Input.css';
+
+class InputComponent extends Component {
 
   constructor(props) {
     super(props);
@@ -24,4 +25,4 @@ class SearchInput extends Component {
   }
 }
 
-export default SearchInput;
+export default InputComponent;

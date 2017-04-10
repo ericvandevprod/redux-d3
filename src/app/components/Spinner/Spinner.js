@@ -8,10 +8,10 @@ let container = {
   margin: '0 auto',
 };
 
-const Spinner = () => (
+const SpinnerComponent = () => (
     <div style={container}>
       <ProgressBar theme={theme} type="circular" mode="indeterminate" multicolor />
     </div>
 );
 
-export default Spinner;
+export default SpinnerComponent;

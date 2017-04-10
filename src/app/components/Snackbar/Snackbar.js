@@ -4,9 +4,9 @@ import { bindActionCreators } from 'redux';
 import { fetchIP } from '../../actions/fetchIP';
 
 import { Snackbar } from 'react-toolbox';
-import theme from './SnackBar.css';
+import theme from './Snackbar.css';
 
-class SnackbarError extends Component {
+class SnackbarComponent extends Component {
   constructor(props) {
     super(props);
 
@@ -15,25 +15,9 @@ class SnackbarError extends Component {
       message: ''
     };
 
-    this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this);
-    this.componentDidMount = this.componentDidMount.bind(this);
-    this.componentWillUnmount = this.componentWillUnmount.bind(this);
+    this.handleSnackbarClick = this.handleSnackbarClick.bind(this);
+    this.handleSnackbarTimeout = this.handleSnackbarTimeout.bind(this);
   }
-
-  componentWillReceiveProps = (props) => {
-    this.setState({
-      active: props.error,
-      message: props.message
-    });
-  };
-
-  componentDidMount = () => {
-    this._isMounted = true;
-  };
-
-  componentWillUnmount = () => {
-    this._isMounted = false;
-  };
 
   handleSnackbarClick = () => {
     this.setState({active: false});
@@ -45,6 +29,21 @@ class SnackbarError extends Component {
     }
     this.props.fetchIP();
   };
+
+  componentWillReceiveProps(props) {
+    this.setState({
+      active: props.error,
+      message: props.message
+    });
+  }
+
+  componentDidMount() {
+    this._isMounted = true;
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
 
   render() {
     return (
@@ -72,4 +71,4 @@ function mapStateToProps({ weather }) {
   return { weather };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SnackbarError);
+export default connect(mapStateToProps, mapDispatchToProps)(SnackbarComponent);

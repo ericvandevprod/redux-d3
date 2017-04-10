@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
-import _ from 'lodash';
 
-import {Tab, Tabs} from 'react-toolbox';
-import Icon from './../../components/Icon/Icon';
-import ContentList from './../../components/List/List';
-import Spinner from './../../components/Progress/Spinner';
-import SnackBar from './../../components/SnackBar/SnackBar';
-import colorGenerator from './../../utils/colorGenerator';
-import theme from './WeatherList.css';
+import { Tab, Tabs } from 'react-toolbox';
+import IconComponent from '../../components/Icon/Icon';
+import ListComponent from '../../components/List/List';
+import SpinnerComponent from '../../components/Spinner/Spinner';
+import SnackbarComponent from '../../components/Snackbar/Snackbar';
+import colorGenerator from '../../utils/colorGenerator';
+import theme from './Weather.css';
 
-class WeatherList extends Component {
+class WeatherContainer extends Component {
 
   constructor(props) {
     super(props);
@@ -54,10 +53,10 @@ class WeatherList extends Component {
     return (
         <Tab label={dayName} key={Math.random() * 10}>
           <div style={{width: '400px', textAlign: 'center', pointerEvents: 'none'}}>
-            <Icon
+            <IconComponent
                 icon={day.icon}
                 color={colorGenerator()} />
-            <ContentList
+            <ListComponent
                 day={day} />
           </div>
         </Tab>
@@ -77,13 +76,13 @@ class WeatherList extends Component {
     } else if (this.props.weather.error) {
       return (
           <section>
-            <Spinner />
-            <SnackBar />
+            <SpinnerComponent />
+            <SnackbarComponent />
           </section>
       )
     } else {
       return (
-          <Spinner />
+          <SpinnerComponent />
       );
     }
 
@@ -94,4 +93,4 @@ function mapStateToProps({ weather }) {
   return { weather };
 }
 
-export default connect(mapStateToProps)(WeatherList);
+export default connect(mapStateToProps)(WeatherContainer);

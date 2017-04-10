@@ -29,8 +29,6 @@ export function fetchWeather(city) {
         return error;
   });
 
-  console.log(request);
-
   return {
     type: FETCH_WEATHER,
     payload: request

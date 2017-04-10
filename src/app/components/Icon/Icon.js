@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import Vivus from 'vivus';
 
-import randomAnimation from './../../utils/randomAnimation';
+import randomAnimation from '../../utils/randomAnimation';
 
 import styles from './Icons.css';
 
-class Icon extends Component {
+class IconComponent extends Component {
   constructor(props) {
     super(props);
 
@@ -14,8 +14,6 @@ class Icon extends Component {
       selectedColor: '',
     };
 
-    this.componentDidMount = this.componentDidMount.bind(this);
-    this.componentWillUnmount = this.componentWillUnmount.bind(this);
     this.fillIcon = this.fillIcon.bind(this);
   }
 
@@ -25,13 +23,14 @@ class Icon extends Component {
     }
   };
 
-  componentWillUnmount = () => {
-    this.setState({finished: false});
-    this._isMounted = false;
-    this._vivus = null;
+  static importComponent = (component) => {
+    if (component.hasOwnProperty('default')) {
+      return component.default;
+    }
+    return component;
   };
 
-  componentDidMount = () => {
+  componentDidMount() {
     this._vivus = new Vivus(this.props.icon, {
       type: 'oneByOne',
       duration: 200,
@@ -39,14 +38,13 @@ class Icon extends Component {
       selfDestroy: true
     }, this.fillIcon.bind(this));
     this._isMounted = true;
-  };
+  }
 
-  static importComponent = (component) => {
-    if (component.hasOwnProperty('default')) {
-      return component.default;
-    }
-    return component;
-  };
+  componentWillUnmount() {
+    this.setState({finished: false});
+    this._isMounted = false;
+    this._vivus = null;
+  }
 
   render() {
     let Icon = this.constructor.importComponent(require(`./../../icons/${this.props.icon}`));
@@ -62,4 +60,4 @@ class Icon extends Component {
   }
 }
 
-export default Icon;
+export default IconComponent;

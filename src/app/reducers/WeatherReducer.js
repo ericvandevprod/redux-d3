@@ -1,10 +1,7 @@
 import { FETCH_WEATHER } from '../actions/fetchWeather';
-import moment from 'moment';
 import _ from 'lodash';
 
-const getConvertedTime = (timestamp) => {
-  return moment.unix(timestamp).format('MM-DD-YYYY');
-};
+import { getConvertedTime } from '../utils/timeConverter';
 
 export default function(state = {}, action) {
   switch (action.type) {

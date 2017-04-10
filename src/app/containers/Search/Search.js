@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchWeather } from '../../actions/fetchWeather';
+import { fetchWeather } from './../../actions/fetchWeather';
 
-import SearchInput from '../../components/Inputs/SearchInput';
-import SearchButton from '../../components/Buttons/SearchButton';
+import InputComponent from '../../components/Input/Input';
+import ButtonComponent from '../../components/Button/Button';
 
 let formStyle = {
   marginTop: '50px',
@@ -14,11 +14,14 @@ let formStyle = {
   flexWrap: 'wrap'
 };
 
-class SearchForm extends Component {
+class SearchContainer extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { term: '' };
+
+    this.state = {
+      term: ''
+    };
   };
 
   componentWillReceiveProps(props) {
@@ -44,9 +47,9 @@ class SearchForm extends Component {
   render() {
     return (
         <form style={formStyle} className="search-form" onSubmit={this.onFormSubmit.bind(this)}>
-          <SearchInput
+          <InputComponent
               onSearchTermChange={searchTerm => {this.trackSearch(searchTerm)}} />
-          <SearchButton />
+          <ButtonComponent />
         </form>
     );
   }
@@ -60,4 +63,4 @@ function mapStateToProps({ ip }) {
   return { ip };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchForm);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchContainer);
