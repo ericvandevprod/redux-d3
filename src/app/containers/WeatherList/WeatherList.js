@@ -75,11 +75,10 @@ class WeatherList extends Component {
           </section>
       );
     } else if (this.props.weather.error) {
-      console.log('errored to snackbar');
       return (
           <section>
             <Spinner />
-            <SnackBar error={true} message={this.props.weather} />
+            <SnackBar />
           </section>
       )
     } else {

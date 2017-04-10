@@ -54,7 +54,7 @@ class SnackbarError extends Component {
               action="Hide"
               active={this.props.weather.error}
               label={this.props.weather.message}
-              timeout={2000}
+              timeout={1500}
               onClick={this.handleSnackbarClick}
               onTimeout={this.handleSnackbarTimeout}
               type="warning"
