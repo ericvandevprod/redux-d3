@@ -36,7 +36,7 @@ class WeatherContainer extends Component {
     }
     return (
         <Tab label={dayName} key={Math.random() * 10}>
-          <div style={{width: '400px', textAlign: 'center', pointerEvents: 'none'}}>
+          <div className={theme.container}>
             <IconComponent
                 icon={day.icon}
                 color={colorGenerator()} />

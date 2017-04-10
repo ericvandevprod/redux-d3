@@ -1,7 +1,9 @@
 import React from 'react';
 
+import theme from './Item.css';
+
 const ItemComponent = (value) => (
-  <span>{value}</span>
+  <span className={theme.stats}>{value}</span>
 );
 
 export default ItemComponent;

@@ -1,18 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchWeather } from './../../actions/fetchWeather';
+import { fetchWeather } from '../../actions/fetchWeather';
 
 import InputComponent from '../../components/Input/Input';
 import ButtonComponent from '../../components/Button/Button';
-
-let formStyle = {
-  marginTop: '50px',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'baseline',
-  flexWrap: 'wrap'
-};
+import theme from './Search.css';
 
 class SearchContainer extends Component {
 
@@ -49,7 +42,7 @@ class SearchContainer extends Component {
 
   render() {
     return (
-        <form style={formStyle} className="search-form" onSubmit={this.onFormSubmit.bind(this)}>
+        <form className={theme.form} onSubmit={this.onFormSubmit.bind(this)}>
           <InputComponent
               onSearchTermChange={searchTerm => {this.trackSearch(searchTerm)}} />
           <ButtonComponent />

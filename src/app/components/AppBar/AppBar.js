@@ -4,7 +4,7 @@ import { AppBar } from 'react-toolbox/lib/app_bar';
 import LogoComponent from '../Logo/Logo.js';
 import theme from './AppBar.css';
 
-let logoStyle = {
+let inlineSVGStyles = {
   width: '3.4rem',
   height: '3.4rem',
   marginRight: '1rem',
@@ -13,7 +13,7 @@ let logoStyle = {
 
 const AppBarComponent = ({ children, ...other }) => (
     <AppBar {...other} theme={theme}>
-      <LogoComponent style={logoStyle} /> Weather App
+      <LogoComponent style={inlineSVGStyles} /> Weather App
       {children}
     </AppBar>
 );

@@ -3,7 +3,7 @@ import Vivus from 'vivus';
 
 import randomAnimation from '../../utils/randomAnimation';
 
-import styles from './Icons.css';
+import theme from './Icons.css';
 
 class IconComponent extends Component {
   constructor(props) {
@@ -55,7 +55,7 @@ class IconComponent extends Component {
             height="200"
             fill={this.props.color}
             stroke={this.props.color}
-            className={this.state.finished ? styles.finished : styles.icon} />
+            className={this.state.finished ? theme.finished : theme.icon} />
     )
   }
 }

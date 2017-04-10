@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchIP } from './../../actions/fetchIP';
+import { fetchIP } from '../../actions/fetchIP';
 
-import AppBarComponent from './../../components/AppBar/AppBar';
-import SearchContainer from './../Search/Search';
-import WeatherContainer from './../Weather/Weather';
+import AppBarComponent from '../../components/AppBar/AppBar';
+import SearchContainer from '../Search/Search';
+import WeatherContainer from '../Weather/Weather';
 
 class AppContainer extends Component {
   constructor(props) {

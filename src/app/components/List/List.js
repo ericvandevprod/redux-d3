@@ -35,8 +35,8 @@ class ListComponent extends Component {
 
   formatValue = (key, value) => {
     let formattedValue = '',
-        degrees = ' °F',
-        percent = ' %',
+        degrees = '°F',
+        percent = '%',
         mph = ' mph',
         dist = ' mi.',
         distMax = '+ mi.',
