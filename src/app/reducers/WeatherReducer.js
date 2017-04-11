@@ -6,6 +6,10 @@ import { getConvertedTime } from '../utils/timeConverter';
 export default function(state = {}, action) {
   switch (action.type) {
     case FETCH_WEATHER:
+      if (_.isUndefined(action.payload)) {
+        return state;
+      }
+
       let data = action.payload.data;
 
       if (action.payload.data.error) {

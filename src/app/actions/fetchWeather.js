@@ -13,7 +13,7 @@ export function fetchWeather(city) {
            return Promise.reject({
             data: {
               error: true,
-              message: 'Unable to find that address'
+              message: 'Unable to find that location'
             }
           });
         }
