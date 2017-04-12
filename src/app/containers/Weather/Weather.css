@@ -8,7 +8,13 @@
 }
 
 .container {
-    max-width: 400px;
+    width: 414px;
     text-align: center;
     pointer-events: none;
+}
+
+@media (max-width: 414px) {
+    .container {
+        max-width: 414px;
+    }
 }
