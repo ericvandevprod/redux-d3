@@ -1,18 +1,13 @@
 if (process.env.NODE_ENV === 'production') {
   const child_process = require('child_process');
   const path = require('path');
-  const _ = require('lodash');
 
-  const env = _.pick(process.env, ['NODE_ENV', 'WEATHER_API']);
+  const env = Object.assign({}, process.env);
 
   const options = {
-    encoding: 'utf8',
-    timeout: 0,
-    maxBuffer: 200*1024,
-    killSignal: 'SIGTERM',
-    cwd: null,
     env: env
   };
+
 
   const webpackExec = `${path.resolve(process.cwd(), 'node_modules/.bin/webpack')}`;
   const file = `${path.resolve(__dirname, 'webpack/webpack.production.config.js')}`;

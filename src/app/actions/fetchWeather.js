@@ -23,7 +23,6 @@ export function fetchWeather(city) {
             weatherUrl = `${ROOT_WEATHER_URL}/${lat},${lng}`;
 
         console.log(response.data.results[0].formatted_address);
-        console.log(weatherUrl);
         return axios.get(weatherUrl);
       }).catch((error) => {
         return error;
