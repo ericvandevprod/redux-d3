@@ -28,13 +28,11 @@ app.get('/api/darksky', (req, res) => {
     axios.get(weatherURL)
         .then((response) => {
           if (response.status !== 200) {
-            res.status(response.status).json({'message': 'Bad response from Dark Sky server'});
+            res.status(response.status).json({"message": "Bad response from Dark Sky server"});
           }
-          console.log(response.data);
           return response.data;
         })
         .then((payload) => {
-          console.log(payload);
           res.status(200).json(payload);
         })
         .catch((err) => {
@@ -42,8 +40,8 @@ app.get('/api/darksky', (req, res) => {
         })
   } catch (err) {
     res.status(500).json({
-      'message': 'Errors occurs requesting Dark Sky API',
-      'details': err
+      "message": "Errors occurs requesting Dark Sky API",
+      "details": err
     });
   }
 });
@@ -53,7 +51,7 @@ if (development) {
 
   const middleware = WepackDevMiddleware(compiler, {
     publicPath: WebpackDevConfig.output.publicPath,
-    contentBase: path.resolve(process.cwd(), "src/www"),
+    contentBase: path.resolve(process.cwd(), 'src/www'),
     hot: true,
     stats: {
       colors: true,
@@ -87,7 +85,7 @@ app.listen(port, host, (err) => {
   if (err) {
     console.log(err);
   } else {
-    console.info(`==> 🌎 Listening on ${host}:${port}...`);
+    console.info(`==> 🌎  Server starting on http://${host}:${port} ...`);
   }
 });
 
