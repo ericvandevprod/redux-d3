@@ -1,13 +1,14 @@
 .tabs {
-    margin: 50px 30px;
+    margin: 50px 10px;
 }
 
 .tab {
     margin: 20px auto;
+    padding: 17px 0;
 }
 
 .container {
-    width: 400px;
+    max-width: 400px;
     text-align: center;
     pointer-events: none;
 }
