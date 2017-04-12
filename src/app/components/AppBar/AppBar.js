@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 
 import { AppBar } from 'react-toolbox/lib/app_bar';
 import LogoComponent from '../Logo/Logo.js';
@@ -14,12 +14,7 @@ let inlineSVGStyles = {
 const AppBarComponent = ({ children, ...other }) => (
     <AppBar {...other} theme={theme}>
       <LogoComponent style={inlineSVGStyles} /> Weather App
-      {children}
     </AppBar>
 );
-
-AppBarComponent.propTypes = {
-  children: PropTypes.node
-};
 
 export default AppBarComponent;

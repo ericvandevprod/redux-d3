@@ -1,21 +1,14 @@
 if (process.env.NODE_ENV === 'production') {
-  const dotenv = require('dotenv').config();
   const child_process = require('child_process');
   const path = require('path');
-  const _ = require('lodash');
-  const env = _.pick(process.env, ['NODE_ENV', 'WEATHER_API']);
 
-  const options = Object.create(process.env);
+  const webpackExec = `${path.resolve(process.cwd(), 'node_modules/.bin/webpack')}`;
+  const file = `${path.resolve(__dirname, 'webpack/webpack.production.config.js')}`;
+  const command = `${webpackExec} -p --config ${file}`;
 
-  options.env = {
-    NODE_ENV: process.env.NODE_ENV,
-    WEATHER_API: process.env.WEATHER_API
-  };
+  console.log('dropped in with production env');
 
-  const executable = `${path.resolve(process.cwd(), 'node_modules/.bin/webpack')} -p --config `;
-  const arg = `${path.resolve(__dirname, '../server/webpack/webpack.production.config.js')}`;
-
-  child_process.exec(executable + arg, options, (error, stdout, stderr) => {
+  child_process.exec(command, (error, stdout, stderr) => {
     console.log('stdout: ' + stdout);
     console.log('stderr: ' + stderr);
     if (error !== null) {
