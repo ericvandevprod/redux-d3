@@ -1,5 +1,3 @@
-const dotenv = require('dotenv').config();
-
 const path = require('path');
 const axios = require('axios');
 const webpack = require('webpack');
@@ -11,8 +9,12 @@ const WebpackHotMiddleware = require('webpack-hot-middleware');
 const WebpackDevConfig = require('./webpack/webpack.development.config.js');
 
 const development = process.env.NODE_ENV !== 'production';
+
+if (development) {
+  const dotenv = require('dotenv').config();
+}
+
 const port = process.env.PORT || 8080;
-const host = process.env.HOST || 'localhost';
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -81,11 +83,11 @@ if (development) {
   });
 }
 
-app.listen(port, host, (err) => {
+app.listen(port, (err) => {
   if (err) {
     console.log(err);
   } else {
-    console.info(`==> 🌎  Server starting on http://${host}:${port} ...`);
+    console.info(`==> 🌎  Server starting on http://localhost:${port} ...`);
   }
 });
 
