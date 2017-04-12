@@ -3,7 +3,7 @@ import axios from 'axios';
 export const PRELOAD_WEATHER = 'PRELOAD_WEATHER';
 
 export function fetchIP() {
-  const ipURL = 'http://freegeoip.net/json/';
+  const ipURL = 'https://freegeoip.net/json/';
 
   const request = axios.get(ipURL)
       .catch((e) => {
