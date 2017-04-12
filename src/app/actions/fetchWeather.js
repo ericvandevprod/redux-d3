@@ -9,7 +9,7 @@ export function fetchWeather(city) {
   const request = axios.get(geocodeURL)
       .then((response) => {
         if (response.data.status === 'ZERO_RESULTS') {
-           return Promise.reject({
+          return Promise.reject({
             data: {
               error: true,
               message: 'Unable to find that location'
@@ -19,13 +19,13 @@ export function fetchWeather(city) {
 
         let lat = response.data.results[0].geometry.location.lat,
             lng = response.data.results[0].geometry.location.lng,
-            proxyURL = `/api/darksky?lat=${lat}&lng=${lng}`;;
+            proxyURL = `/api/darksky?lat=${lat}&lng=${lng}`;
 
         console.log(response.data.results[0].formatted_address);
         return axios.get(proxyURL);
       }).catch((error) => {
         return error;
-  });
+      });
 
   return {
     type: FETCH_WEATHER,

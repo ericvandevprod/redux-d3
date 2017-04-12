@@ -12,39 +12,40 @@ const WebpackDevConfig = require('./webpack/webpack.development.config.js');
 
 const development = process.env.NODE_ENV !== 'production';
 const port = process.env.PORT || 8080;
+const host = process.env.HOST || 'localhost';
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.get('/api', function(req, res) {
-    res.json({ message: 'Hi, welcome to the server api!' });
-});
+app.get('/api/darksky', (req, res) => {
+  const ROOT_WEATHER_URL = `https://api.darksky.net/forecast/${process.env.WEATHER_API}`;
 
-app.get('/api/darksky', function(req, res) {
-    const ROOT_WEATHER_URL = `https://api.darksky.net/forecast/${process.env.WEATHER_API}`;
+  try {
+    const coords = `${req.query.lat},${req.query.lng}`;
+    const weatherURL = `${ROOT_WEATHER_URL}/${coords}`;
 
-    try {
-        const coordinates = `${req.query.lat},${req.query.lng}`;
-        const url = `${ROOT_WEATHER_URL}/${coordinates}`;
-
-        axios.get(url)
-            .then(function(response) {
-                if (response.status !== 200) {
-                    res.status(response.status).json({'message': 'Bad response from Dark Sky server'});
-                }
-                return response.data;
-            })
-            .then(function(payload) {
-                res.status(200).json(payload);
-            })
-            .catch((e) => {
-                return e.message;
-            })
-    } catch(err) {
-        console.log("Errors occurs requesting Dark Sky API", err);
-        res.status(500).json({'message': 'Errors occurs requesting Dark Sky API', 'details' : err});
-    }
+    axios.get(weatherURL)
+        .then((response) => {
+          if (response.status !== 200) {
+            res.status(response.status).json({'message': 'Bad response from Dark Sky server'});
+          }
+          console.log(response.data);
+          return response.data;
+        })
+        .then((payload) => {
+          console.log(payload);
+          res.status(200).json(payload);
+        })
+        .catch((err) => {
+          return err;
+        })
+  } catch (err) {
+    res.status(500).json({
+      'message': 'Errors occurs requesting Dark Sky API',
+      'details': err
+    });
+  }
 });
 
 if (development) {
@@ -65,7 +66,6 @@ if (development) {
   });
 
   app.use(middleware);
-
   app.use(historyApiFallback({
       verbose: false
   }));
@@ -83,10 +83,11 @@ if (development) {
   });
 }
 
-app.listen(port, '0.0.0.0', function onStart(err) {
+app.listen(port, host, (err) => {
   if (err) {
     console.log(err);
+  } else {
+    console.info(`==> 🌎 Listening on ${host}:${port}...`);
   }
-  console.info('==> 🌎 Listening on port %s. Open up http://0.0.0.0:%s/ in your browser.', port, port);
 });
 

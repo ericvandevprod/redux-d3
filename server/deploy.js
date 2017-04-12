@@ -6,13 +6,14 @@ if (process.env.NODE_ENV === 'production') {
   const file = `${path.resolve(__dirname, 'webpack/webpack.production.config.js')}`;
   const command = `${webpackExec} -p --config ${file}`;
 
-  console.log('dropped in with production env');
+  console.log('Building production bundle...');
 
   child_process.exec(command, (error, stdout, stderr) => {
-    console.log('stdout: ' + stdout);
-    console.log('stderr: ' + stderr);
+    console.log(`stdout: ${stdout}`);
+    console.log(`warnings: ${stderr}`);
+    console.log(`Bundle complete!`);
     if (error !== null) {
-      console.log('exec error: ' + error);
+      console.log(`Bundle execution failed: ${error}`);
     }
   });
 }
