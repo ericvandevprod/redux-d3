@@ -31,7 +31,8 @@ module.exports = (options) => ({
   plugins: options.plugins.concat([
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV)
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+        WEATHER_API: JSON.stringify(process.env.WEATHER_API)
       }
     }),
     new webpack.NamedModulesPlugin()
