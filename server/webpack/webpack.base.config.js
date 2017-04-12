@@ -24,8 +24,8 @@ module.exports = (options) => ({
         ]
       }
     }, {
-      test: /\.(eot|svg|ttf|woff|woff2)$/,
-      loader: 'file-loader'
+      test: /\.(eot|ico|png|svg|ttf|woff|woff2)$/,
+      loader: 'file-loader?name=[name].[ext]'
     }].concat(options.module.rules)
   },
   plugins: options.plugins.concat([

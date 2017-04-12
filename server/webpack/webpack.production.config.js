@@ -18,6 +18,7 @@ module.exports = baseConfig({
       template: path.join(__dirname, './../../src/www/index.tpl.html'),
       inject: 'body',
       filename: 'index.html',
+      favicon: path.join(__dirname, './../../src/www/favicon.ico'),
       minify: {
         removeComments: true,
         collapseWhitespace: true,

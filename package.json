@@ -74,7 +74,7 @@
     "supertest": "^3.0.0"
   },
   "scripts": {
-    "start": "node_modules/.bin/cross-env NODE_ENV=development node server",
+    "start": "node server",
     "postinstall": "node server/deploy"
   },
   "license": "MIT"
