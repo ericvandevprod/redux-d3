@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const express = require('express');
+const cors = require('cors');
 const WepackDevMiddleware = require('webpack-dev-middleware');
 const WebpackHotMiddleware = require('webpack-hot-middleware');
 
@@ -10,6 +11,8 @@ const WebpackDevConfig = require('./webpack/webpack.development.config.js');
 const development = process.env.NODE_ENV !== 'production';
 const port = process.env.PORT || 8080;
 const app = express();
+
+app.use(cors());
 
 if (development) {
   const compiler = webpack(WebpackDevConfig);
